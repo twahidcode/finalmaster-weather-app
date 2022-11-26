@@ -33,11 +33,11 @@ function displayTemperature(response){
   let dateElement = document.querySelector("#date");
   let iconElement = document.querySelector("#icon");
   celesiusTemperature = response.data.temperature.current;
+  cityElement.innerHTML = response.data.city;
   windElement.innerHTML = Math.round(response.data.wind.speed);
   humidityElement.innerHTML = response.data.temperature.humidity;
   descriptionElement.innerHTML = response.data.condition.description;
   temperatureElement.innerHTML = Math.round(response.data.temperature.current);
-  cityElement.innerHTML = response.data.city;
   dateElement.innerHTML = formatDate(response.data.time * 1000);
   iconElement.setAttribute(
     "src",
@@ -58,8 +58,6 @@ function displayTemperature(response){
     search(cityInputElement.value);
   }
   
-  let form = document.querySelector("#search-form");
-  form.addEventListener("submit", handleSubmit);
 
   function displayfahrenheitTemperature(event) {
     event.preventDefault();
@@ -85,5 +83,5 @@ function displayTemperature(response){
 
   let celsiusLink = document.querySelector("#celsius-link");
   celsiusLink.addEventListener("click", displayCelesiusTemperature);
-  
+
   search("Madrid");
